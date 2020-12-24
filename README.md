@@ -1,2 +1,2 @@
-# university-stuff
-Repo which contains the results of my trials &amp; tribulations (labs, assignments, semester projects) over the past 2 years in university.
+# coursework
+This repo contains my solutions to the programming assignments and labs for various courses I took (over 3 years of college).
