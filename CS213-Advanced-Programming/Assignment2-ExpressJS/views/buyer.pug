@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    style.
+      table, th, td {
+      border: 1px solid black;
+      padding: 5px;
+      }
+      table {
+      border-spacing: 1px;
+      }
+      tr:nth-child(even) {background-color: #ffff99;}
+      @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+      body {
+      background: #76b852; /* fallback for old browsers */
+      background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+      background: -moz-linear-gradient(right, #76b852, #8DC26F);
+      background: -o-linear-gradient(right, #76b852, #8DC26F);
+      background: linear-gradient(to left, #76b852, #8DC26F);
+      font-family: "Roboto", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      }
+  body
+    h2  Welcome to the buyer's dashboard, #{name}
+    h2 View Products 
+    table(style='width:100%')
+      tr
+        th Product ID
+        th Product Name
+        th Image
+        th Price/Rs.
+        th Description
+        th Rating/5
+      tbody
+        each prod in products
+          tr
+            td= prod.productid
+            td= prod.pname
+            td
+              img(src=prod.imagename, style="width: 80px; height: 50px")
+            td= prod.price
+            td= prod.desc
+            td= prod.rating
+    br
+    br
+    form(method='POST', action='\logout')
+      button Click Here to Log Out

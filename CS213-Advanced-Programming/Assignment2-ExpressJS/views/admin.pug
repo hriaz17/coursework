@@ -1,0 +1,71 @@
+doctype html
+html
+  head
+    style.
+      table, th, td {
+      border: 1px solid black;
+      padding: 5px;
+      }
+      table {
+      border-spacing: 1px;
+      }
+      tr:nth-child(even) {background-color: #ffff99;}
+      @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+      body {
+      background: #76b852; /* fallback for old browsers */
+      background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+      background: -moz-linear-gradient(right, #76b852, #8DC26F);
+      background: -o-linear-gradient(right, #76b852, #8DC26F);
+      background: linear-gradient(to left, #76b852, #8DC26F);
+      font-family: "Roboto", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      }
+      .logout button {
+      font-family: "Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background: #4CAF50;
+      width: 25%;
+      border: 0;
+      padding: 15px;
+      color: #FFFFFF;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+      }
+      form button:hover,.form button:active,.form button:focus {
+      background: #43A047;
+      }
+  body
+    h2  Welcome to the admin dashboard, #{name}s
+    h2 View Users (Sellers + Buyers) 
+    table(style='width:100%')
+      tr
+        th Name
+        th Email
+        th Current Role
+        th Change Role
+      tbody
+        each user in users
+          tr
+            td=user.name 
+            td=user.email
+            td=user.role
+            td
+              form.set-buyer(action='\setBuyer', method='POST')
+                input(type='hidden', placeholder='User Email', name='email', value=user.email) 
+                button Set Buyer
+              |&nbsp;&nbsp;
+              form.set-seller(action='\setSeller', method='POST')
+                input(type='hidden', placeholder='User Email', name='email', value=user.email)  
+                button Set Seller
+              |&nbsp;&nbsp;
+              form.set-admin(action='\setAdmin', method='POST')
+                input(type='hidden', placeholder='User Email', name='email', value=user.email)  
+                button Set Admin
+    br
+    br
+    form.logout(method='POST', action='\logout')
+      button Click Here to Log Out

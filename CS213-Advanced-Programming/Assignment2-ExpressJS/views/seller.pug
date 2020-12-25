@@ -1,0 +1,143 @@
+doctype html
+html
+  head
+    style.
+      table, th, td {
+      border: 1px solid black;
+      padding: 5px;
+      }
+      table {
+      border-spacing: 1px;
+      }
+      tr:nth-child(even) {background-color: #ffff99;}
+      @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+      body {
+      background: #76b852; /* fallback for old browsers */
+      background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+      background: -moz-linear-gradient(right, #76b852, #8DC26F);
+      background: -o-linear-gradient(right, #76b852, #8DC26F);
+      background: linear-gradient(to left, #76b852, #8DC26F);
+      font-family: "Roboto", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      }
+    
+      .product-form input {
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 25%;
+      border: 0;
+      margin: 0 auto;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+      }
+      .product-form button {
+      font-family: "Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background: #4CAF50;
+      width: 25%;
+      border: 0;
+      padding: 15px;
+      color: #FFFFFF;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+      }
+      form button:hover,.form button:active,.form button:focus {
+      background: #43A047;
+      }
+      .logout button {
+      font-family: "Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background: #4CAF50;
+      width: 25%;
+      border: 0;
+      padding: 15px;
+      color: #FFFFFF;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+      }
+      .update button {
+      font-family: "Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background: #4CAF50;
+      width: 25%;
+      border: 0;
+      padding: 15px;
+      color: #FFFFFF;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+      }
+
+      }
+
+
+  body
+    h2  Welcome to the seller's dashboard, #{name}
+    h2 Product List
+    table(style='width:100%')
+      tr
+        th Product ID
+        th Product Name
+        th Image
+        th Price/Rs.
+        th Description
+        th Rating/5
+        th Action
+      tbody
+        each prod in products
+          tr
+            td= prod.productid
+            td= prod.pname
+            td
+              img(src=prod.imagename, style="width: 80px; height: 50px")
+            td= prod.price
+            td= prod.desc
+            td= prod.rating
+            td
+              |&nbsp;&nbsp;
+              form.delete-form(action='\deleteProduct', method='POST')
+                input(type='hidden', placeholder='Product ID', name='productid', value=prod.productid)
+                button Delete
+        
+    br
+    br
+    h2  Add/Update a product: 
+    form.product-form(action='\insertProduct', method='POST', enctype='multipart/form-data')
+      input(type='text', placeholder='Product ID', name='productid')
+      br
+      br
+      input(type='text', placeholder='Product Name', name='pname')
+      br
+      br
+      input(type='file', placeholder='Image', name='fileToUpload')
+      br
+      br
+      input(type='text', placeholder='Price', name='price')
+      br
+      br
+      input(type='text', placeholder='Description', name='desc')
+      br
+      br
+      input(type='text', placeholder='Rating', name='rating')
+      br
+      br
+      button Add product
+    br
+    br
+    form.update(method='POST', action='\changeProduct')
+      button Update Product
+    br
+    br
+    form.logout(method='POST', action='\logout')
+      button Click Here to Log Out

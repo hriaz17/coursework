@@ -1,0 +1,27 @@
+html 
+    head 
+        title User
+          style.
+            @import url(https://fonts.googleapis.com/css?   family=Roboto:300);
+            body {
+            background: #76b852; /* fallback for old browsers */
+            background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+            background: -moz-linear-gradient(right, #76b852, #8DC26F);
+            background: -o-linear-gradient(right, #76b852, #8DC26F);
+            background: linear-gradient(to left, #76b852, #8DC26F);
+            font-family: "Roboto", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            }
+
+    body 
+        if(type == "error") 
+            h3(style = "color:red") #{message}
+            br
+            br 
+            a(href='/') Click Here now to go to Log In 
+        else 
+            h3 New User, name: #{user.name}, email: #{user.email} and role: #{user.role} added!
+            br
+            br 
+            a(href='/') Click Here to go to Log In

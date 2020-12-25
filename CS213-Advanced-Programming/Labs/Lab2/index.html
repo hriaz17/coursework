@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<head> 
+<title> </title>
+<style>
+
+input {
+	padding: 1%;
+	width:5%;
+}
+
+#display {
+	width:24%;
+	color:black;
+	background-color: white;
+	margin-bottom: 1%;
+}
+
+.row {
+}
+.calculator{
+
+	padding: 0.5em;
+
+}
+
+
+</style>
+</head>
+<body> 
+
+<div class = "calculator" align = "center">
+
+<input id = "display" type = "text" value = ""/>
+<div class = "row"> 
+<input class = "input" type = "button" id = "MC" value = "MC" onclick="action(document.getElementById('MC').value)">
+<input class = "input" type = "button" id = "0" value = "0" onclick="action(document.getElementById('0').value)">
+<input class = "input" type = "button" id = "1" value = "1" onclick="action(document.getElementById('1').value)">
+<input class = "input" type = "button" id = "2" value = "2" onclick="action(document.getElementById('2').value)">
+<input class = "input" type = "button" id = "+" value = "+" onclick="action(document.getElementById('+').value)">
+</div>
+
+<div class = "row">
+<input class = "input" type = "button" id = "MS" value = "MS" onclick="action(document.getElementById('MS').value)" >
+<input class = "input" type = "button" id = "3"  value = "3" onclick="action(document.getElementById('3').value)">
+<input class = "input" type = "button" id = "4"  value = "4" onclick="action(document.getElementById('4').value)">
+<input class = "input" type = "button" id = "5" value = "5" onclick="action(document.getElementById('5').value)">
+<input class = "input" type = "button" id = "-" value = "-" onclick="action(document.getElementById('-').value)">
+</div>
+
+<div class = "row">
+<input class = "input" type = "button" id = "MR" value = "MR" onclick="action(document.getElementById('MR').value)">
+<input class = "input" type = "button" id = "6"  value = "6" onclick="action(document.getElementById('6').value)">
+<input class = "input" type = "button" id = "7"  value = "7" onclick="action(document.getElementById('7').value)">
+<input class = "input" type = "button" id = "8"  value = "8" onclick="action(document.getElementById('8').value)">
+<input class = "input" type = "button" id = "*"  value = "*" onclick="action(document.getElementById('*').value)">
+</div>
+
+<div class = "row">
+<input class = "input" type = "button" id = "M+"  value = "M+" onclick="action(document.getElementById('M+').value)">
+<input class = "input" type = "button" id = "9"   value = "9" onclick="action(document.getElementById('9').value)">
+<input class = "input" type = "button" id = "pmn" value = "+-" onclick="action(document.getElementById('pmn').value)">
+<input class = "input" type = "button" id = "=" value = "=" onclick="action(document.getElementById('=').value)">
+<input class = "input" type = "button" id = "/" value = "/" onclick="action(document.getElementById('/').value)">
+</div>
+
+<div class = "row">
+<input class = "input" type = "button" id = "1/x" value="1/x" onclick="action(document.getElementById('1/x').value)">
+<input class = "input" type = "button" id = "." value="." onclick="action(document.getElementById('.').value)">
+<input class = "input" type = "button" id = "x2" value="x2" onclick="action(document.getElementById('x2').value)">
+<input class = "input" type = "button" id = "sqrt" value = "&radic;" onclick="action(document.getElementById('sqrt').value)">
+<input class = "input" type = "button" id = "C" value = "C" onclick="action(document.getElementById('C').value)">
+</div>
+
+
+
+
+</div>
+<script>
+var M;
+function action(btnValue)
+{
+  var result = "";
+  
+
+  if(btnValue != "=" && btnValue != "C" && btnValue != "1/x" && btnValue != "x2" && btnValue != "+-" && btnValue != "√" && btnValue != "." && btnValue != "MS" && btnValue != "MR" && btnValue != "MC" && btnValue != "M+")
+  {
+  	
+  	document.getElementById('display').value = document.getElementById('display').value + btnValue;
+  }
+  else if(btnValue == ".")
+  {
+  	  	document.getElementById('display').value = document.getElementById('display').value + btnValue;
+  }
+  else if(btnValue == "=")
+  {
+  	var result = eval(document.getElementById('display').value);
+  	document.getElementById('display').value = result;
+  }
+  else if (btnValue == "C")
+  {
+  	document.getElementById('display').value = "";
+  }
+  else if (btnValue == "1/x")
+  {
+  	var result = 1 / (eval(document.getElementById('display').value));
+  	document.getElementById('display').value = result;
+  }
+  else if(btnValue == "x2")
+  {
+  	var result = (eval(document.getElementById('display').value)) * (eval(document.getElementById('display').value));
+  	document.getElementById('display').value = result;
+  }
+  else if(btnValue == "√")
+  {
+  	var result = Math.sqrt(document.getElementById('display').value);
+  	document.getElementById('display').value = result;
+  }
+  else if(btnValue == "+-")
+  {
+  	var result = (eval(document.getElementById('display').value)) *- 1;
+  	document.getElementById('display').value = result;
+  }
+
+   else if(btnValue == "M+")
+  {
+  	 var value = parseInt(document.getElementById('display').value);
+  	 M = M + value;
+  	 document.getElementById('display').value = "";
+  }
+
+  else if (btnValue == "MS")
+  {
+  	var num = parseInt(document.getElementById('display').value);
+  	
+  	if(Number.isNaN(num) == false)
+  	{
+  		M = num;
+  	}
+  	else
+  	{
+  		return;
+  	}
+  	
+  }
+
+  else if (btnValue == "MC")
+  {
+  	M = "";
+  }
+
+  else if(btnValue = "MR")
+  {
+  	document.getElementById('display').value = M;
+  }
+
+
+}
+</script>
+</body>
+</html>

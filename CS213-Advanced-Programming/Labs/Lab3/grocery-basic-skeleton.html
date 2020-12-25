@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery - Chapter 7: Introducing jQuery - Event Object</title>
+    <link rel="stylesheet" href="css/c07.css" />
+  </head>
+  <body>
+    <div id="page">
+      <h1 id="header">List</h1>
+      <h2>Buy groceries</h2>
+      <ul>
+        <li id="one" class="hot"><em>fresh</em> figs</li>
+        <li id="two" class="hot">pine nuts</li>
+        <li id="three" class="hot">honey</li>
+        <li id="four">balsamic vinegar</li>
+      </ul>
+    </div>
+    <script src="js/jquery-1.11.0.js"></script>
+    <script>
+
+    //task 2
+
+    /*$(function()
+    {
+    	$("ul").after("<p class = 'notice'>Click or mouseover a hot item...</p>");
+
+    });*/
+    
+    //task 3
+    
+   $(function()
+    {
+    	var $newListItem = $('<li>lingerine</li>');
+  		$('li:last').after($newListItem);
+  		var $newListItem = $('<li>coconut milk</li>');
+  		$('li:last').after($newListItem);
+  		var $newListItem = $('<li>vine-ripened-tomatoes</li>');
+  		$('li:last').after($newListItem);
+  		var $newListItem = $('<li>lemons</li>');
+  		$('li:last').after($newListItem);
+    	var $newListItem = $('<li>cream</li>');
+  		$('li:last').after($newListItem);
+  		var $newListItem = $('<li>mushrooms</li>');
+  		$('li:last').after($newListItem);
+  		var $newListItem = $('<li>apples</li>');
+  		$('li:last').after($newListItem);
+  		var $newListItem = $('<li>strawberries</li>');
+  		$('li:last').after($newListItem);
+  		var $newListItem = $('<li>ricecrackers</li>');
+  		$('li:last').after($newListItem);
+   		var $newListItem = $('<li>greentea</li>');
+  		$('li:last').after($newListItem);
+   		var $newListItem = $('<li>lettuce</li>');
+  		$('li:last').after($newListItem);
+   		var $newListItem = $('<li>ginger</li>');
+  		$('li:last').after($newListItem);
+  		var $newHTML = $('<div id = "footer"> <h3> &#9400; ListKing </h3> </div>');
+  		$('ul').after($newHTML);
+  		$('ul').after("<div id='slideAd'>BUY LISTKING PRO FOR ONLY $1.99</div>");
+    });
+
+	$(window).on("scroll", function() {
+	var scrollHeight = $(document).height();
+	var scrollPosition = $(window).height() + $(window).scrollTop();
+	if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+	    // when scroll to bottom of the page
+      $("#slideAd").show();
+    }
+    else
+    {
+      $("#slideAd").hide();
+    }
+	  
+	});
+
+  //task 1 & partly 2
+  $("li").click(function() {
+    var dt = new Date();
+    var text = $(this).text();
+    $(this).append("<span class = 'date'>" + "Clicked on " + dt.toString().replace(/GMT.*/g,"") + "</span>");
+
+    var item = text;
+    var status = "";
+    var event = "Event: Click";
+
+    if(text === "pine nuts" || text === "honey")
+    	{
+    		status = "important";
+    	} 
+    	else
+    	{
+    		status = "available";
+    	}
+
+    	$('.notice').html("Item: " + item + "<br/>" + "Status: " + status + "<br/>" + event);
+
+    });
+
+    //task 2
+    $('li').mouseenter(function(){
+  		var text = $(this).text();
+  		var item = text;
+  		var status = "";
+  		var event = "Event: mouseover";
+  		if(text === "pine nuts" || text === "honey")
+  		{
+  			status = "Important";
+  		}
+  		else {
+  			status = "Available";
+  		}
+  		$(".notice").html("Item: " + item + "<br/>" + "Status: " + status + "<br/>" + event);
+  	});
+
+    </script>
+  </body>
+</html>

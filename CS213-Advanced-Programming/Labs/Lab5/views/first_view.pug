@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+  body
+    h2 HTML Form
+    form(action='/handler', method='POST')
+      | First name:
+      br
+      input(type='text', name='firstname')
+      br
+      |   Last name:
+      br
+      input(type='text', name='lastname')
+      br
+      br
+      input(type='submit', value='Submit')
